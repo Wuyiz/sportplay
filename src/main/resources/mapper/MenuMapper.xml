@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuyiz.sportplay.mapper.MenuMapper">
+    <resultMap id="menuMap" type="MainMenu">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="path" property="path"/>
+        <collection property="subMenuList" ofType="SubMenu">
+            <id column="sid" property="id"/>
+            <result column="stitle" property="title"/>
+            <result column="spath" property="path"/>
+        </collection>
+    </resultMap>
+    <select id="getMenus" resultMap="menuMap">
+        SELECT
+            mm.*,
+            sm.id AS sid,
+            sm.title AS stitle,
+            sm.path AS spath
+        FROM
+            mainmenu mm,
+            submenu sm
+        WHERE
+            mm.id = sm.mid;
+    </select>
+</mapper>
