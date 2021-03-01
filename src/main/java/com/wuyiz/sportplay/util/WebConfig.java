@@ -5,8 +5,9 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
+ * Created with IntelliJ IDEA
  * @author: suhai
- * @create: 2021-02-25 17:33
+ * @date: 2021-02-25 17:33
  * @description: 全局配置类，配置跨域请求工具类
  */
 @Configuration
@@ -21,7 +22,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
          * 5.响应时间
          */
         registry.addMapping("/**")
-                .allowedOrigins("Http://localhost:8080", "null")
+                .allowedOrigins("http://localhost:8080", "null")
                 .allowedMethods("GET", "POST", "PUT", "OPTIONS", "DELETE")
                 .allowCredentials(true)
                 .maxAge(3600);
