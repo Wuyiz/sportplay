@@ -18,4 +18,9 @@ class MenuMapperTest {
     void test1() {
         System.out.println(menuMapper.getMenus());
     }
+
+    @Test
+    void test2() {
+        System.out.println(menuMapper.getMenusAndIcon());
+    }
 }

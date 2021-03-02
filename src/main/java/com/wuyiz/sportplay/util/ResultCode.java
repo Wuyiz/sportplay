@@ -11,9 +11,9 @@ package com.wuyiz.sportplay.util;
  */
 public enum ResultCode {
     /* 成功状态码 */
-    SUCCESS(1, "ok"),
+    SUCCESS(200, "ok"),
     /* 失败状态码 */
-    FAILURE(0, "error"),
+    FAILURE(404, "error"),
 
     /* 参数错误：1001-1999 */
     PARAM_IS_INVALID(1001, "参数无效"),

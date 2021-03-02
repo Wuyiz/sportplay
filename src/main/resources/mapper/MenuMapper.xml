@@ -13,6 +13,18 @@
             <result column="spath" property="path"/>
         </collection>
     </resultMap>
+    <resultMap id="menuVOMap" type="MainMenuVO">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="path" property="path"/>
+        <result column="micon" property="icon"/>
+        <collection property="subMenuVOS" ofType="SubMenuVO">
+            <id column="sid" property="id"/>
+            <result column="stitle" property="title"/>
+            <result column="spath" property="path"/>
+            <result column="sicon" property="subIcon"/>
+        </collection>
+    </resultMap>
     <select id="getMenus" resultMap="menuMap">
         SELECT
             mm.*,
@@ -24,5 +36,19 @@
             submenu sm
         WHERE
             mm.id = sm.mid;
+    </select>
+    <select id="getMenusAndIcon" resultMap="menuVOMap">
+        SELECT
+            mm.*,
+            mi.icon micon,
+            sm.id AS sid,
+            sm.title AS stitle,
+            sm.path AS spath,
+            mi2.icon AS sicon
+        FROM
+            mainmenu mm
+            LEFT JOIN menuicon mi ON mm.id = mi.id
+            LEFT JOIN submenu sm ON mm.id = sm.mid
+            LEFT JOIN menuicon mi2 ON sm.id = mi2.id
     </select>
 </mapper>
