@@ -14,3 +14,9 @@ mybatis:
   type-aliases-package: com.wuyiz.sportplay.entity
   mapper-locations: classpath*:mapper/*.xml
 
+# pagehelper分页插件
+# 配置方言
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true    # 分页合理化参数
+  support-methods-arguments: true   # 持通过 Mapper 接口参数来传递分页参数

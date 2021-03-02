@@ -1,14 +1,13 @@
 package com.wuyiz.sportplay.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.wuyiz.sportplay.entity.User;
 import com.wuyiz.sportplay.service.UserService;
 import com.wuyiz.sportplay.util.Result;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA
@@ -29,5 +28,14 @@ public class UserController {
             return Result.userLoginError();
         }
         return Result.success(res);
+    }
+
+    @GetMapping("list")
+    public Result queryAllUserInfoList(
+            @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(defaultValue = "5") Integer pageSize
+    ) {
+        List<User> users = userService.queryAllUserInfoList(pageNum, pageSize);
+        return Result.success(new PageInfo<>(users));
     }
 }

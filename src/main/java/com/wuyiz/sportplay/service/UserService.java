@@ -2,6 +2,8 @@ package com.wuyiz.sportplay.service;
 
 import com.wuyiz.sportplay.entity.User;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA
  * @author: suhai
@@ -11,4 +13,6 @@ import com.wuyiz.sportplay.entity.User;
 public interface UserService {
 
     User queryUserExist(User user);
+
+    List<User> queryAllUserInfoList(Integer pageNum, Integer pageSize);
 }
