@@ -42,4 +42,18 @@ public interface UserService {
      * @return
      */
     int saveUser(User user);
+
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    int delUser(Integer id);
+
+    /**
+     * 编辑用户信息
+     * @param user
+     * @return
+     */
+    int editUser(User user);
 }

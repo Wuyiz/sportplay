@@ -37,4 +37,9 @@ class UserMapperTest {
     void queryAllUserByCondition() {
         System.out.println(userMapper.queryAllUserByCondition("0"));
     }
+
+    @Test
+    void deleteUser() {
+        System.out.println(userMapper.deleteUser(14));
+    }
 }

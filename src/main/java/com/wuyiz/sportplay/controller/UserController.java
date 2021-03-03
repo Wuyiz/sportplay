@@ -15,7 +15,7 @@ import java.util.List;
  * Created with IntelliJ IDEA
  * @author: suhai
  * @date: 2021-03-01 16:45
- * @description: 用户登录
+ * @description: 用户功能展示层
  */
 @RestController
 @RequestMapping("user")
@@ -59,6 +59,24 @@ public class UserController {
     @PostMapping("save")
     public Result saveUser(@RequestBody User user) {
         int i = userService.saveUser(user);
+        if (i == 0) {
+            return Result.failure();
+        }
+        return Result.success();
+    }
+
+    @DeleteMapping("delete/{id}")
+    public Result delUser(@PathVariable Integer id) {
+        int i = userService.delUser(id);
+        if (i == 0) {
+            return Result.failure();
+        }
+        return Result.success();
+    }
+
+    @PutMapping("edit")
+    public Result editUser(@RequestBody User user) {
+        int i = userService.editUser(user);
         if (i == 0) {
             return Result.failure();
         }

@@ -1,6 +1,7 @@
 package com.wuyiz.sportplay.mapper;
 
 import com.wuyiz.sportplay.entity.User;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -63,4 +64,20 @@ public interface UserMapper {
     @Insert("insert into easyuser (username, password, email, role, state) " +
             "values(#{username}, #{password}, #{email}, #{role}, #{state})")
     int insertUser(User user);
+
+    /**
+     * 删除user表中对应id的数据
+     * @param id
+     * @return
+     */
+    @Delete("delete from easyuser where id=#{id}")
+    int deleteUser(Integer id);
+
+    /**
+     * 根据用户id修改用户昵称、密码、邮箱信息
+     * @param user
+     * @return
+     */
+    @Update("update easyuser set username=#{username}, password=#{password}, email=#{email} where id=#{id}")
+    int updateUserInfoById(User user);
 }
