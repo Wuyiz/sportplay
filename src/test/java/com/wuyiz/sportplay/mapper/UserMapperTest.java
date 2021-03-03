@@ -27,4 +27,14 @@ class UserMapperTest {
     void test2() {
         System.out.println(userMapper.queryAllUserByPageNumSize(2, 2));
     }
+
+    @Test
+    void updateUserState() {
+        System.out.println(userMapper.updateUserState(1, true));
+    }
+
+    @Test
+    void queryAllUserByCondition() {
+        System.out.println(userMapper.queryAllUserByCondition("0"));
+    }
 }

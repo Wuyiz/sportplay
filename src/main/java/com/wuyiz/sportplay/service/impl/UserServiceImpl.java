@@ -26,8 +26,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> queryAllUserInfoList(Integer pageNum, Integer pageSize) {
+    public List<User> queryUserInfoList(String query, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
+        if (!query.trim().isEmpty()) {
+            return userMapper.queryAllUserByCondition(query);
+        }
         return userMapper.queryAllUser();
+    }
+
+    @Override
+    public int updateUserState(Integer id, Boolean state) {
+        return userMapper.updateUserState(id, state);
+    }
+
+    @Override
+    public int saveUser(User user) {
+        user.setRole("普通用户");
+        user.setState(false);
+        System.out.println(user);
+        return userMapper.insertUser(user);
     }
 }

@@ -12,7 +12,16 @@ import java.util.List;
  * @description: TODO
  */
 public interface MenuMapper {
+
+    /**
+     * 获取菜单标题和其他信息 [弃用]
+     * @return
+     */
     List<MainMenu> getMenus();
 
+    /**
+     * 获取主菜单、子菜单以及各个菜单图标
+     * @return
+     */
     List<MainMenuVO> getMenusAndIcon();
 }
